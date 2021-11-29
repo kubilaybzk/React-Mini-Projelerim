@@ -12,7 +12,7 @@ const initialState={
   loading:false,
   cart:cartItems,
   total:0,
-  amounth:0,
+  amount:0,
 }
 
 
@@ -41,6 +41,9 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'GET_TOTALS' })
   }, [state.cart])
 
+  const toggleAmount = (id, type) => {
+    dispatch({ type: 'TOGGLE_AMOUNT', payload: { id, type } })
+  }
 
 
   return (
@@ -50,7 +53,8 @@ const AppProvider = ({ children }) => {
         clearCart,
         remove,
         increase,
-        decrease
+        decrease,
+        toggleAmount
       }}
     >
       {children}
